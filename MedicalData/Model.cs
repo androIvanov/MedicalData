@@ -9,6 +9,7 @@ namespace MedicalData
     {
         public DbSet<ClaimPayments> ClaimPayments { get; set; }
         public DbSet<CallsToActions> CallsToActions { get; set; }
+        public DbSet<BillingProviders> BillingProviders { get; set; }
 
         private const string connectionString = "server=localhost; database=Medical; Integrated Security=true";
 
@@ -73,6 +74,31 @@ namespace MedicalData
                 x.Property(p => p.Action1).HasColumnType("nvarchar(255)");
                 x.Property(p => p.Action2).HasColumnType("nvarchar(255)");
             });
+
+            modelBuilder.Entity<BillingProviders>(x =>
+            {
+                x.HasKey(p => p.ProviderId);
+                x.Property(p => p.ProviderId).IsRequired();
+                x.Property(p => p.ProviderCode).HasColumnType("nvarchar(10)");
+                x.Property(p => p.ReferenceIdQualifier).HasColumnType("nvarchar(10)");
+                x.Property(p => p.ReferenceID).HasColumnType("nvarchar(50)");
+                x.Property(p => p.EntityTypeQualifier).HasColumnType("nvarchar(1)");
+                x.Property(p => p.NameLast).HasColumnType("nvarchar(60)");
+                x.Property(p => p.NameFirst).HasColumnType("nvarchar(50)");
+                x.Property(p => p.NameMiddle).HasColumnType("nvarchar(50)");
+                x.Property(p => p.NamePrefix).HasColumnType("nvarchar(10)");
+                x.Property(p => p.NameSuffix).HasColumnType("nvarchar(10)");
+                x.Property(p => p.IdentificationCodeQualifier).HasColumnType("nvarchar(2)");
+                x.Property(p => p.IdentificationCode).HasColumnType("nvarchar(80)");
+                x.Property(p => p.Addres).HasColumnType("nvarchar(80)");
+                x.Property(p => p.City).HasColumnType("nvarchar(50)");
+                x.Property(p => p.State).HasColumnType("nvarchar(2)");
+                x.Property(p => p.Zip).HasColumnType("nvarchar(10)");
+                x.Property(p => p.TaxReferenceIdQualifier).HasColumnType("nvarchar(3)");
+                x.Property(p => p.TaxReferenceId).HasColumnType("nvarchar(50)");
+            });
+
+
         }
     }
 
