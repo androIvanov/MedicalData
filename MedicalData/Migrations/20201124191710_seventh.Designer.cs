@@ -4,14 +4,16 @@ using MedicalData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedicalData.Migrations
 {
     [DbContext(typeof(Model))]
-    partial class ModelModelSnapshot : ModelSnapshot
+    [Migration("20201124191710_seventh")]
+    partial class seventh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -775,62 +777,6 @@ namespace MedicalData.Migrations
                     b.ToTable("NextOfKins");
                 });
 
-            modelBuilder.Entity("MedicalData.Entities.Patient", b =>
-                {
-                    b.Property<int>("PatientId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("date");
-
-                    b.Property<string>("EntityTypeQualifier")
-                        .HasColumnType("nchar(1)");
-
-                    b.Property<string>("IndividualRelationshipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(2)");
-
-                    b.Property<string>("NameFirst")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NameLast")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NameMidle")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NamePrefix")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("NameSuffix")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("nchar(1)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(2)");
-
-                    b.Property<int>("SubscriberId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ZIp")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("PatientId");
-
-                    b.ToTable("Patients");
-                });
-
             modelBuilder.Entity("MedicalData.Entities.PatientAccount", b =>
                 {
                     b.Property<int>("AccountId")
@@ -861,209 +807,6 @@ namespace MedicalData.Migrations
                     b.HasKey("AccountId");
 
                     b.ToTable("PatientAccounts");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Person", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("BirthOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Citizenship")
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("date");
-
-                    b.Property<string>("DriversLicense")
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("FamilyName")
-                        .IsRequired()
-                        .HasColumnType("nchar(255)");
-
-                    b.Property<string>("GivenName")
-                        .IsRequired()
-                        .HasColumnType("nchar(255)");
-
-                    b.Property<string>("Language")
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("MRN")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("MiddleName")
-                        .IsRequired()
-                        .HasColumnType("nchar(255)");
-
-                    b.Property<string>("MothersMaidenName")
-                        .IsRequired()
-                        .HasColumnType("nchar(255)");
-
-                    b.Property<bool>("MultipleBirthIndicator")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("NameSuffix")
-                        .IsRequired()
-                        .HasColumnType("nchar(255)");
-
-                    b.Property<string>("OtherDesignation")
-                        .IsRequired()
-                        .HasColumnType("nchar(255)");
-
-                    b.Property<DateTime>("PatientDeathDate")
-                        .HasColumnType("datetime");
-
-                    b.Property<int>("PatientDeathIndicator")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PatientId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PatientIdExt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PhoneBusiness")
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("PhoneHome")
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("Race")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("SNN")
-                        .IsRequired()
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("Sex")
-                        .IsRequired()
-                        .HasColumnType("varchar(1)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("StreetAddress")
-                        .IsRequired()
-                        .HasColumnType("nchar(255)");
-
-                    b.Property<string>("Zip")
-                        .IsRequired()
-                        .HasColumnType("nchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Persons");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Procedure", b =>
-                {
-                    b.Property<int>("ProcedureId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("AssociatedDiagnosis")
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("DiagnosisId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProcedureCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("ProcedureCodingMethod")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("ProcedureDateTime")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("ProcedureDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("SerID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("ProcedureId");
-
-                    b.ToTable("Procedures");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Provider", b =>
-                {
-                    b.Property<int>("ProviderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("ClaimId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("EmployersIdentificationNumber")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("EntityIdCode")
-                        .IsRequired()
-                        .HasColumnType("nchar(2)");
-
-                    b.Property<string>("EntityTypeQualifier")
-                        .IsRequired()
-                        .HasColumnType("nchar(1)");
-
-                    b.Property<string>("IdCode")
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<string>("IdCodeQualifier")
-                        .HasColumnType("nvarchar(2)");
-
-                    b.Property<string>("NameFirst")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NameLast")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NameMidle")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NamePrefix")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("NameSuffix")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(2)");
-
-                    b.Property<string>("Zip")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("ProviderId");
-
-                    b.ToTable("Providers");
                 });
 #pragma warning restore 612, 618
         }

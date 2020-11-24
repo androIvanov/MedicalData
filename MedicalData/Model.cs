@@ -20,6 +20,13 @@ namespace MedicalData
         public DbSet<Guarantors> Guarantors { get; set; }
         public DbSet<HL7Messages> HL7Messages { get; set; }
         public DbSet<Insurance> Insurances { get; set; }
+        public DbSet<LineNumber> LineNumbers { get; set; }
+        public DbSet<NextOfKin> NextOfKins { get; set; }
+        public DbSet<PatientAccount> PatientAccounts { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Procedure> Procedures { get; set; }
+        public DbSet<Provider> Providers { get; set; }
 
         private const string connectionString = "server=localhost; database=MedicalBase; Integrated Security=true";
 
