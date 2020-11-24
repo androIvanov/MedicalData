@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalData.Migrations
 {
     [DbContext(typeof(Model))]
-    [Migration("20201123141751_Andrey")]
-    partial class Andrey
+    [Migration("20201124092231_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,88 @@ namespace MedicalData.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("MedicalData.BillingProviders", b =>
+                {
+                    b.Property<int>("ProviderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Addres")
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("EntityTypeQualifier")
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("IdentificationCode")
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("IdentificationCodeQualifier")
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("NameFirst")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NameLast")
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NameMiddle")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NamePrefix")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("NameSuffix")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ProviderCode")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ReferenceID")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ReferenceIdQualifier")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TaxReferenceId")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TaxReferenceIdQualifier")
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("Zip")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("ProviderId");
+
+                    b.ToTable("BillingProviders");
+                });
+
+            modelBuilder.Entity("MedicalData.CallsToActions", b =>
+                {
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Action1")
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Action2")
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("PtdCoeficient")
+                        .HasColumnType("int");
+
+                    b.HasKey("Code");
+
+                    b.ToTable("CallsToActions");
+                });
 
             modelBuilder.Entity("MedicalData.ClaimPayments", b =>
                 {
@@ -73,8 +155,7 @@ namespace MedicalData.Migrations
                         .HasColumnType("nchar(10)");
 
                     b.Property<decimal>("CoverageAmount")
-                        .HasColumnType("decimal(18,2)")
-                        .HasColumnName("decimal(18, 2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FacilityCodeValue")
                         .HasColumnType("nvarchar(2)");
