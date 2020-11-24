@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MedicalData.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -101,6 +101,59 @@ namespace MedicalData.Migrations
                 {
                     table.PrimaryKey("PK_ClaimPayments", x => x.ClaimPaymentId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Claims",
+                columns: table => new
+                {
+                    ClaimId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SubscriberId = table.Column<int>(type: "int", nullable: false),
+                    PatientControlNumber = table.Column<string>(type: "nvarchar(38)", nullable: false),
+                    MonetaryAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FacilityCodeValue = table.Column<string>(type: "nvarchar(2)", nullable: false),
+                    FacilityCodeQualifier = table.Column<string>(type: "nvarchar(2)", nullable: false),
+                    ClaimFrequencyTypeCode = table.Column<string>(type: "nchar(1)", nullable: false),
+                    SignatureOnFileIndicator = table.Column<string>(type: "nchar(1)", nullable: true),
+                    ProviderAcceptAssignmentCode = table.Column<string>(type: "nchar(1)", nullable: true),
+                    AssignmentOfBenefitsIndicator = table.Column<string>(type: "nchar(1)", nullable: true),
+                    RelatedCausesCode = table.Column<string>(type: "nvarchar(3)", nullable: true),
+                    OnsetDate = table.Column<DateTime>(type: "date", nullable: false),
+                    DTP434 = table.Column<string>(type: "nvarchar(20)", nullable: true),
+                    PrincipalDiagnosisCode = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    AdditionalDiagnosisCode1 = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    AdditionalDiagnosisCode2 = table.Column<string>(type: "nvarchar(30)", nullable: true),
+                    OccurrenceCode = table.Column<string>(type: "nvarchar(2)", nullable: true),
+                    OccurenceDate = table.Column<DateTime>(type: "date", nullable: false),
+                    InstitutionalAdmissionTypeCode = table.Column<string>(type: "nchar(1)", nullable: true),
+                    InstitutionalAdmissionSourceCode = table.Column<string>(type: "nchar(1)", nullable: true),
+                    InstitutionalInstitutionalPatientStatusCode = table.Column<string>(type: "nvarchar(2)", nullable: true),
+                    ClaimRefferenceId = table.Column<string>(type: "nvarchar(50)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Claims", x => x.ClaimId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Diagnosis",
+                columns: table => new
+                {
+                    DiagnosisId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SetID = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    DiagnosisCodingMethod = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    DiagnosisCode = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    DiagnosisDescription = table.Column<string>(type: "nvarchar(255)", nullable: false),
+                    DiagnosisDateTime = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DiagnosisType = table.Column<string>(type: "nvarchar(50)", nullable: true),
+                    DiagnosticRelatedGroup = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    AccountId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Diagnosis", x => x.DiagnosisId);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -113,6 +166,12 @@ namespace MedicalData.Migrations
 
             migrationBuilder.DropTable(
                 name: "ClaimPayments");
+
+            migrationBuilder.DropTable(
+                name: "Claims");
+
+            migrationBuilder.DropTable(
+                name: "Diagnosis");
         }
     }
 }

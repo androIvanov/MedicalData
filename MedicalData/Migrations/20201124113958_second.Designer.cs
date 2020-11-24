@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalData.Migrations
 {
     [DbContext(typeof(Model))]
-    [Migration("20201124092231_firstMigration")]
-    partial class firstMigration
+    [Migration("20201124113958_second")]
+    partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -237,6 +237,144 @@ namespace MedicalData.Migrations
                     b.HasKey("ClaimPaymentId");
 
                     b.ToTable("ClaimPayments");
+                });
+
+            modelBuilder.Entity("MedicalData.Entities.Claims", b =>
+                {
+                    b.Property<int>("ClaimId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("AdditionalDiagnosisCode1")
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("AdditionalDiagnosisCode2")
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("AssignmentOfBenefitsIndicator")
+                        .HasColumnType("nchar(1)");
+
+                    b.Property<string>("ClaimFrequencyTypeCode")
+                        .IsRequired()
+                        .HasColumnType("nchar(1)");
+
+                    b.Property<string>("ClaimRefferenceId")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DTP434")
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("FacilityCodeQualifier")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("FacilityCodeValue")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("InstitutionalAdmissionSourceCode")
+                        .HasColumnType("nchar(1)");
+
+                    b.Property<string>("InstitutionalAdmissionTypeCode")
+                        .HasColumnType("nchar(1)");
+
+                    b.Property<string>("InstitutionalInstitutionalPatientStatusCode")
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<decimal>("MonetaryAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("OccurenceDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("OccurrenceCode")
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<DateTime>("OnsetDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("PatientControlNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(38)");
+
+                    b.Property<string>("PrincipalDiagnosisCode")
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("ProviderAcceptAssignmentCode")
+                        .HasColumnType("nchar(1)");
+
+                    b.Property<string>("RelatedCausesCode")
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("SignatureOnFileIndicator")
+                        .HasColumnType("nchar(1)");
+
+                    b.Property<int>("SubscriberId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClaimId");
+
+                    b.ToTable("Claims");
+                });
+
+            modelBuilder.Entity("MedicalData.Entities.Diagnosis", b =>
+                {
+                    b.Property<int>("DiagnosisId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DiagnosisCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DiagnosisCodingMethod")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("DiagnosisDateTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("DiagnosisDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("DiagnosisType")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DiagnosticRelatedGroup")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("SetID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("DiagnosisId");
+
+                    b.ToTable("Diagnosis");
+                });
+
+            modelBuilder.Entity("MedicalData.Entities.EDI835Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("EDI835Messages");
                 });
 #pragma warning restore 612, 618
         }
