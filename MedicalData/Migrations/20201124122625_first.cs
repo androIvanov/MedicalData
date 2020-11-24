@@ -154,6 +154,53 @@ namespace MedicalData.Migrations
                 {
                     table.PrimaryKey("PK_Diagnosis", x => x.DiagnosisId);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "EDI835Messages",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateAdded = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EDI835Messages", x => x.MessageId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EDI837Message",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateAdded = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EDI837Message", x => x.MessageId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Eligibility",
+                columns: table => new
+                {
+                    EligibilityId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    InsuranceId = table.Column<int>(type: "int", nullable: false),
+                    SetID = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    EligibilityStatus = table.Column<string>(type: "nvarchar(100)", nullable: true),
+                    COBSequence = table.Column<int>(type: "int", nullable: false),
+                    SetIDZM2 = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    UnpaidBalance = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    UnpaidBalanceType = table.Column<string>(type: "nvarchar(50)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Eligibility", x => x.EligibilityId);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -172,6 +219,15 @@ namespace MedicalData.Migrations
 
             migrationBuilder.DropTable(
                 name: "Diagnosis");
+
+            migrationBuilder.DropTable(
+                name: "EDI835Messages");
+
+            migrationBuilder.DropTable(
+                name: "EDI837Message");
+
+            migrationBuilder.DropTable(
+                name: "Eligibility");
         }
     }
 }

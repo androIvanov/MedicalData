@@ -15,8 +15,13 @@ namespace MedicalData
         public DbSet<Claims> Claims { get; set; }
         public DbSet<Diagnosis> Diagnosis { get; set; }
         public DbSet<EDI835Message> EDI835Messages { get; set; }
+        public DbSet<EDI837Message> EDI837Message { get; set; }
+        public DbSet<Eligibility> Eligibility { get; set; }
+        public DbSet<Guarantors> Guarantors { get; set; }
+        public DbSet<HL7Messages> HL7Messages { get; set; }
+        public DbSet<Insurance> Insurances { get; set; }
 
-        private const string connectionString = "server=localhost; database=BaseMedical; Integrated Security=true";
+        private const string connectionString = "server=localhost; database=MedicalBase; Integrated Security=true";
 
         protected override void OnConfiguring(DbContextOptionsBuilder contextOptions)
         {

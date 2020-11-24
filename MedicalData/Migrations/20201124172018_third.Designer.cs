@@ -4,14 +4,16 @@ using MedicalData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedicalData.Migrations
 {
     [DbContext(typeof(Model))]
-    partial class ModelModelSnapshot : ModelSnapshot
+    [Migration("20201124172018_third")]
+    partial class third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -517,191 +519,6 @@ namespace MedicalData.Migrations
                         .HasColumnType("datetime");
 
                     b.ToTable("HL7Messages");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Insurance", b =>
-                {
-                    b.Property<int>("InsuranceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("AuthorizationInformation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("BillingStatus")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CertificationAgency")
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime>("CertificationBeginDate")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("CertificationDateTime")
-                        .HasColumnType("datetime");
-
-                    b.Property<DateTime>("CertificationEndDate")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("CertificationModifyDateTime")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("CertificationNumber")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CertificationRequired")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CertifiedBy")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CompanyAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("CompanyID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("CompanyPhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CompanyPlanCode")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CoordinationBenefitsPriority")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("CoordinationofBenefits")
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("Days")
-                        .HasColumnType("int");
-
-                    b.Property<string>("GroupName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("GroupNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("GuarantorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("InsuredFamilyName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("InsuredGivenName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("InsuredMiddleName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("InsuredSuffix")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("InsuredsAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime>("InsuredsDateOfBirth")
-                        .HasColumnType("date");
-
-                    b.Property<string>("InsuredsEmployerName")
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("InsuredsIDNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("InsuredsSSN")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<byte[]>("NoticeofAdmissionCode")
-                        .IsRequired()
-                        .HasColumnType("varbinary(50)");
-
-                    b.Property<DateTime>("NoticeofAdmissionDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("Operator")
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("PlanCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("PlanEffectiveDate")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("PlanExpirationDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("PlanType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PolicyNumber")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PreAdmitCertification")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("PreCertificationReqWindow")
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("PriorInsurancePlanID")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("RelationshiptoPatient")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<byte[]>("ReportofEligibilityCode")
-                        .IsRequired()
-                        .HasColumnType("varbinary(50)");
-
-                    b.Property<DateTime>("ReportofEligibilityDate")
-                        .HasColumnType("date");
-
-                    b.Property<string>("SetID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("SetIDIN2")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("SetIDIN3")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("VerificationBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime>("VerificationDateTime")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("VerificationStatus")
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("InsuranceId");
-
-                    b.ToTable("Insurances");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicalData.Migrations
 {
     [DbContext(typeof(Model))]
-    [Migration("20201124110715_first")]
-    partial class first
+    [Migration("20201124170358_second")]
+    partial class second
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -356,6 +356,154 @@ namespace MedicalData.Migrations
                     b.HasKey("DiagnosisId");
 
                     b.ToTable("Diagnosis");
+                });
+
+            modelBuilder.Entity("MedicalData.Entities.EDI835Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("EDI835Messages");
+                });
+
+            modelBuilder.Entity("MedicalData.Entities.EDI837Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("EDI837Message");
+                });
+
+            modelBuilder.Entity("MedicalData.Entities.Eligibility", b =>
+                {
+                    b.Property<int>("EligibilityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("COBSequence")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EligibilityStatus")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("InsuranceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SetID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("SetIDZM2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("UnpaidBalance")
+                        .HasColumnType("decimal(18,4)");
+
+                    b.Property<string>("UnpaidBalanceType")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("EligibilityId");
+
+                    b.ToTable("Eligibility");
+                });
+
+            modelBuilder.Entity("MedicalData.Entities.Guarantors", b =>
+                {
+                    b.Property<int>("GuarantorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("date");
+
+                    b.Property<string>("EmployerAddress")
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("EmployerName")
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("EmployerPhoneNumber")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FamilyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("GivenName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("MiddleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("PhoneNumberBusiness")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumberHome")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Relationship")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("SNN")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("SetID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("StreetAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Suffix")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Zip")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("GuarantorId");
+
+                    b.ToTable("Guarantors");
                 });
 #pragma warning restore 612, 618
         }
