@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using MedicalData.Entities;
+using MedicalData.EntityConfiguration;
 
 namespace MedicalData
 {
@@ -27,6 +28,11 @@ namespace MedicalData
         public DbSet<Person> Persons { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
         public DbSet<Provider> Providers { get; set; }
+        public DbSet<ServiceLine> ServiceLines { get; set; }
+        public DbSet<ServicePayment> ServicePayments { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Visit> Visits { get; set; }
 
         private const string connectionString = "server=localhost; database=MedicalBase; Integrated Security=true";
 
