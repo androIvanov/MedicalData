@@ -33,6 +33,7 @@ namespace MedicalData
         public DbSet<Subscriber> Subscribers { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Visit> Visits { get; set; }
+        public DbSet<PtdScore> PtdScores { get; set; }
 
         private const string connectionString = "server=localhost; database=MedicalBase; Integrated Security=true";
 
