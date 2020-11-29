@@ -4,14 +4,16 @@ using MedicalData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MedicalData.Migrations
 {
     [DbContext(typeof(Model))]
-    partial class ModelModelSnapshot : ModelSnapshot
+    [Migration("20201129153032_thirdMigration")]
+    partial class thirdMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace MedicalData.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("MedicalData.Entities.BillingProviders", b =>
+            modelBuilder.Entity("MedicalData.BillingProviders", b =>
                 {
                     b.Property<int>("ProviderId")
                         .ValueGeneratedOnAdd()
@@ -82,7 +84,7 @@ namespace MedicalData.Migrations
                     b.ToTable("BillingProviders");
                 });
 
-            modelBuilder.Entity("MedicalData.Entities.CallsToActions", b =>
+            modelBuilder.Entity("MedicalData.CallsToActions", b =>
                 {
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(50)");
@@ -101,7 +103,7 @@ namespace MedicalData.Migrations
                     b.ToTable("CallsToActions");
                 });
 
-            modelBuilder.Entity("MedicalData.Entities.ClaimPayments", b =>
+            modelBuilder.Entity("MedicalData.ClaimPayments", b =>
                 {
                     b.Property<int>("ClaimPaymentId")
                         .ValueGeneratedOnAdd()
@@ -154,9 +156,6 @@ namespace MedicalData.Migrations
 
                     b.Property<decimal>("CoverageAmount")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("EDI835MessageMessageId")
-                        .HasColumnType("int");
 
                     b.Property<string>("FacilityCodeValue")
                         .HasColumnType("nvarchar(2)");
@@ -237,10 +236,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("ClaimPaymentId");
 
-                    b.HasIndex("EDI835MessageMessageId");
-
-                    b.HasIndex("TransactionId");
-
                     b.ToTable("ClaimPayments");
                 });
 
@@ -319,8 +314,6 @@ namespace MedicalData.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ClaimId");
-
-                    b.HasIndex("SubscriberId");
 
                     b.ToTable("Claims");
                 });
@@ -440,8 +433,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("EligibilityId");
 
-                    b.HasIndex("InsuranceId");
-
                     b.ToTable("Eligibility");
                 });
 
@@ -483,9 +474,6 @@ namespace MedicalData.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<int?>("PatientAccountAccountId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PhoneNumberBusiness")
                         .HasColumnType("nvarchar(50)");
 
@@ -519,8 +507,6 @@ namespace MedicalData.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("GuarantorId");
-
-                    b.HasIndex("PatientAccountAccountId");
 
                     b.ToTable("Guarantors");
                 });
@@ -722,8 +708,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("InsuranceId");
 
-                    b.HasIndex("GuarantorId");
-
                     b.ToTable("Insurances");
                 });
 
@@ -756,8 +740,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("LineNumberId");
 
-                    b.HasIndex("TransactionId");
-
                     b.ToTable("LineNumbers");
                 });
 
@@ -779,9 +761,6 @@ namespace MedicalData.Migrations
                         .IsRequired()
                         .HasColumnType("nchar(255)");
 
-                    b.Property<int?>("PatientAccountAccountId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PhoneBusiness")
                         .IsRequired()
                         .HasColumnType("nchar(255)");
@@ -799,8 +778,6 @@ namespace MedicalData.Migrations
                         .HasColumnType("nchar(255)");
 
                     b.HasKey("NOKId");
-
-                    b.HasIndex("PatientAccountAccountId");
 
                     b.ToTable("NextOfKins");
                 });
@@ -858,8 +835,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("PatientId");
 
-                    b.HasIndex("SubscriberId");
-
                     b.ToTable("Patients");
                 });
 
@@ -892,7 +867,8 @@ namespace MedicalData.Migrations
 
                     b.HasKey("AccountId");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("PersonId")
+                        .IsUnique();
 
                     b.ToTable("PatientAccounts");
                 });
@@ -1038,8 +1014,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("ProcedureId");
 
-                    b.HasIndex("DiagnosisId");
-
                     b.ToTable("Procedures");
                 });
 
@@ -1099,8 +1073,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("ProviderId");
 
-                    b.HasIndex("ClaimId");
-
                     b.ToTable("Providers");
                 });
 
@@ -1114,9 +1086,6 @@ namespace MedicalData.Migrations
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CallsToActionsCode")
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(50)");
 
@@ -1125,9 +1094,6 @@ namespace MedicalData.Migrations
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(255)");
-
-                    b.Property<int?>("PatientAccountAccountId")
-                        .HasColumnType("int");
 
                     b.Property<string>("ResolvedBy")
                         .HasColumnType("nchar(10)");
@@ -1139,10 +1105,6 @@ namespace MedicalData.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ScoreId");
-
-                    b.HasIndex("CallsToActionsCode");
-
-                    b.HasIndex("PatientAccountAccountId");
 
                     b.ToTable("PtdScores");
                 });
@@ -1194,8 +1156,6 @@ namespace MedicalData.Migrations
                         .HasColumnType("nvarchar(2)");
 
                     b.HasKey("ServiceLineId");
-
-                    b.HasIndex("ClaimId");
 
                     b.ToTable("ServiceLines");
                 });
@@ -1268,8 +1228,6 @@ namespace MedicalData.Migrations
 
                     b.HasKey("ServicePaymentId");
 
-                    b.HasIndex("ClaimPaymentId");
-
                     b.ToTable("ServicePayments");
                 });
 
@@ -1280,14 +1238,8 @@ namespace MedicalData.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("BillingProviderProviderId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ClaimFilingIndicatorCode")
                         .HasColumnType("nvarchar(2)");
-
-                    b.Property<int?>("EDI837MessageMessageId")
-                        .HasColumnType("int");
 
                     b.Property<string>("IndividualRelationshipCode")
                         .HasColumnType("nvarchar(2)");
@@ -1390,10 +1342,6 @@ namespace MedicalData.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("SubscriberId");
-
-                    b.HasIndex("BillingProviderProviderId");
-
-                    b.HasIndex("EDI837MessageMessageId");
 
                     b.ToTable("Subscribers");
                 });
@@ -1689,9 +1637,6 @@ namespace MedicalData.Migrations
                     b.Property<string>("InterestCode")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("PatientAccountAccountId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PatientClass")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
@@ -1765,37 +1710,7 @@ namespace MedicalData.Migrations
 
                     b.HasKey("VIsitId");
 
-                    b.HasIndex("PatientAccountAccountId");
-
                     b.ToTable("Visits");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.ClaimPayments", b =>
-                {
-                    b.HasOne("MedicalData.Entities.EDI835Message", "EDI835Message")
-                        .WithMany("ClaimPayments")
-                        .HasForeignKey("EDI835MessageMessageId");
-
-                    b.HasOne("MedicalData.Entities.Transaction", "Transaction")
-                        .WithMany("ClaimPayments")
-                        .HasForeignKey("TransactionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EDI835Message");
-
-                    b.Navigation("Transaction");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Claims", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Subscriber", "Subscriber")
-                        .WithMany("Claims")
-                        .HasForeignKey("SubscriberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Subscriber");
                 });
 
             modelBuilder.Entity("MedicalData.Entities.Diagnosis", b =>
@@ -1807,239 +1722,25 @@ namespace MedicalData.Migrations
                     b.Navigation("PatientAccount");
                 });
 
-            modelBuilder.Entity("MedicalData.Entities.Eligibility", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Insurance", "Insurance")
-                        .WithMany("Eligibilities")
-                        .HasForeignKey("InsuranceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Insurance");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Guarantors", b =>
-                {
-                    b.HasOne("MedicalData.Entities.PatientAccount", "PatientAccount")
-                        .WithMany("Guarantors")
-                        .HasForeignKey("PatientAccountAccountId");
-
-                    b.Navigation("PatientAccount");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Insurance", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Guarantors", "Guarantor")
-                        .WithMany("Insurances")
-                        .HasForeignKey("GuarantorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Guarantor");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.LineNumber", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Transaction", "Transaction")
-                        .WithMany("LineNumbers")
-                        .HasForeignKey("TransactionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Transaction");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.NextOfKin", b =>
-                {
-                    b.HasOne("MedicalData.Entities.PatientAccount", "PatientAccount")
-                        .WithMany("NextOfKins")
-                        .HasForeignKey("PatientAccountAccountId");
-
-                    b.Navigation("PatientAccount");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Patient", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Subscriber", "Subscriber")
-                        .WithMany("Patients")
-                        .HasForeignKey("SubscriberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Subscriber");
-                });
-
             modelBuilder.Entity("MedicalData.Entities.PatientAccount", b =>
                 {
                     b.HasOne("MedicalData.Entities.Person", "Person")
-                        .WithMany("PatientAccounts")
-                        .HasForeignKey("PersonId")
+                        .WithOne("PatientAccount")
+                        .HasForeignKey("MedicalData.Entities.PatientAccount", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Person");
                 });
 
-            modelBuilder.Entity("MedicalData.Entities.Procedure", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Diagnosis", "Diagnosis")
-                        .WithMany("Procedures")
-                        .HasForeignKey("DiagnosisId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Diagnosis");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Provider", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Claims", "Claim")
-                        .WithMany("Providers")
-                        .HasForeignKey("ClaimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Claim");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.PtdScore", b =>
-                {
-                    b.HasOne("MedicalData.Entities.CallsToActions", "CallsToActions")
-                        .WithMany("PtdScores")
-                        .HasForeignKey("CallsToActionsCode");
-
-                    b.HasOne("MedicalData.Entities.PatientAccount", "PatientAccount")
-                        .WithMany("PtdScores")
-                        .HasForeignKey("PatientAccountAccountId");
-
-                    b.Navigation("CallsToActions");
-
-                    b.Navigation("PatientAccount");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.ServiceLine", b =>
-                {
-                    b.HasOne("MedicalData.Entities.Claims", "Claim")
-                        .WithMany("ServiceLines")
-                        .HasForeignKey("ClaimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Claim");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.ServicePayment", b =>
-                {
-                    b.HasOne("MedicalData.Entities.ClaimPayments", "ClaimPayment")
-                        .WithMany("ServicePayments")
-                        .HasForeignKey("ClaimPaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ClaimPayment");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Subscriber", b =>
-                {
-                    b.HasOne("MedicalData.Entities.BillingProviders", "BillingProvider")
-                        .WithMany("Subscribers")
-                        .HasForeignKey("BillingProviderProviderId");
-
-                    b.HasOne("MedicalData.Entities.EDI837Message", "EDI837Message")
-                        .WithMany("Subscribers")
-                        .HasForeignKey("EDI837MessageMessageId");
-
-                    b.Navigation("BillingProvider");
-
-                    b.Navigation("EDI837Message");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Visit", b =>
-                {
-                    b.HasOne("MedicalData.Entities.PatientAccount", "PatientAccount")
-                        .WithMany("Visits")
-                        .HasForeignKey("PatientAccountAccountId");
-
-                    b.Navigation("PatientAccount");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.BillingProviders", b =>
-                {
-                    b.Navigation("Subscribers");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.CallsToActions", b =>
-                {
-                    b.Navigation("PtdScores");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.ClaimPayments", b =>
-                {
-                    b.Navigation("ServicePayments");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Claims", b =>
-                {
-                    b.Navigation("Providers");
-
-                    b.Navigation("ServiceLines");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Diagnosis", b =>
-                {
-                    b.Navigation("Procedures");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.EDI835Message", b =>
-                {
-                    b.Navigation("ClaimPayments");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.EDI837Message", b =>
-                {
-                    b.Navigation("Subscribers");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Guarantors", b =>
-                {
-                    b.Navigation("Insurances");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Insurance", b =>
-                {
-                    b.Navigation("Eligibilities");
-                });
-
             modelBuilder.Entity("MedicalData.Entities.PatientAccount", b =>
                 {
                     b.Navigation("Diagnoses");
-
-                    b.Navigation("Guarantors");
-
-                    b.Navigation("NextOfKins");
-
-                    b.Navigation("PtdScores");
-
-                    b.Navigation("Visits");
                 });
 
             modelBuilder.Entity("MedicalData.Entities.Person", b =>
                 {
-                    b.Navigation("PatientAccounts");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Subscriber", b =>
-                {
-                    b.Navigation("Claims");
-
-                    b.Navigation("Patients");
-                });
-
-            modelBuilder.Entity("MedicalData.Entities.Transaction", b =>
-                {
-                    b.Navigation("ClaimPayments");
-
-                    b.Navigation("LineNumbers");
+                    b.Navigation("PatientAccount");
                 });
 #pragma warning restore 612, 618
         }

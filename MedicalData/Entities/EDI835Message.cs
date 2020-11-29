@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -9,5 +8,9 @@ namespace MedicalData.Entities
         public int MessageId { get; set; }
         public string Message { get; set; }
         public DateTime DateAdded { get; set; }
+
+        // relational properties
+
+        public ICollection<ClaimPayments> ClaimPayments { get; set; }
     }
 }

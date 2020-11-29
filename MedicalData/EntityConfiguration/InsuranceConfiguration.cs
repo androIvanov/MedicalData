@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MedicalData.Entities;
+﻿using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -64,7 +61,10 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(p => p.CertificationAgency).HasColumnType("nvarchar(255)");
 			builder.Property(p => p.PreCertificationReqWindow).HasColumnType("nvarchar(255)");
 
-		}
+			// relations
 
+			builder.HasOne(r => r.Guarantor);
+			builder.HasMany(r => r.Eligibilities);
+		}
     }
 }

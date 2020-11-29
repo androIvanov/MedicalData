@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -40,6 +37,9 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.PatientDeathDate).HasColumnType("datetime");
 			builder.Property(x => x.PatientDeathIndicator).HasColumnType("int");
 
+			// relations 
+
+			builder.HasMany(r => r.PatientAccounts);
 		}
     }
 }

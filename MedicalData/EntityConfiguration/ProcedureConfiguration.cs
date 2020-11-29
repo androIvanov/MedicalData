@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MedicalData.Entities;
+﻿using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,6 +17,10 @@ namespace MedicalData.EntityConfiguration
             builder.Property(x => x.ProcedureDescription).HasColumnType("nvarchar(255)").IsRequired();
             builder.Property(x => x.ProcedureDateTime).HasColumnType("datetime").IsRequired();
             builder.Property(x => x.AssociatedDiagnosis).HasColumnType("nvarchar(255)");
+
+            // relations
+
+            builder.HasOne(r => r.Diagnosis);
         }
     }
 }

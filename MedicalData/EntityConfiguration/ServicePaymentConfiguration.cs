@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -32,6 +29,10 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.LineItemControlNumber).HasColumnType("nvarchar(50)");
 			builder.Property(x => x.ServiceSupplementalAmountQualifierCode).HasColumnType("nvarchar(3)");
 			builder.Property(x => x.ServiceSupplementalAmount).HasColumnType("decimal(18, 2)");
+
+			// relations
+
+			builder.HasOne(r => r.ClaimPayment);
 
 		}
     }

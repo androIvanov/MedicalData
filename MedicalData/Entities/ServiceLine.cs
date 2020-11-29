@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -20,5 +18,8 @@ namespace MedicalData.Entities
 		public string SecondaryDiagnosisCodePointer { get; set; }
 		public DateTime ServiceDateTime { get; set; }
 
+		// relational properties
+
+		public Claims Claim { get; set; }
 	}
 }

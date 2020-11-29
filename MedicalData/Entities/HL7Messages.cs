@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -9,5 +7,10 @@ namespace MedicalData.Entities
         public DateTime MessageDateTime;
         public string Message;
         public int AccountId;
+
+        //navigational properties
+
+        //KEYLESS ??
+
     }
 }

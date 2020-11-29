@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -41,5 +40,12 @@ namespace MedicalData.Entities
 		public string PayerCity { get; set; }
 		public string PayerState { get; set; }
 		public string PayerZip { get; set; }
+
+		// realtional properties
+
+		public EDI837Message EDI837Message { get; set; }
+		public ICollection<Patient> Patients { get; set; }
+		public BillingProviders BillingProvider { get; set; }
+		public ICollection<Claims> Claims { get; set; }
     }
 }

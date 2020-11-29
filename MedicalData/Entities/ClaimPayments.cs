@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace MedicalData
+namespace MedicalData.Entities
 {
     class ClaimPayments
     {
@@ -47,5 +46,11 @@ namespace MedicalData
         public string ClaimContactComunicationsNumberQualifier { get; set; }
         public string ClaimContactComunicationsNumber { get; set; }
         public decimal CoverageAmount { get; set; }
+
+        // realtional properties
+
+        public EDI835Message EDI835Message { get; set; }
+        public ICollection<ServicePayment> ServicePayments { get; set; }
+        public Transaction Transaction { get; set; }
     }
 }

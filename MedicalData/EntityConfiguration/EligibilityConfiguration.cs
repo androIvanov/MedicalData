@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,6 +17,10 @@ namespace MedicalData.EntityConfiguration
             builder.Property(p => p.SetIDZM2).HasColumnType("nvarchar(50)").IsRequired();
             builder.Property(p => p.UnpaidBalance).HasColumnType("decimal(18, 4)");
             builder.Property(p => p.UnpaidBalanceType).HasColumnType("nvarchar(50)");
+
+            // relations 
+
+            builder.HasOne(r => r.Insurance);
         }
     }
 }

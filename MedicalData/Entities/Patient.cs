@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -21,5 +19,9 @@ namespace MedicalData.Entities
 		public string State { get; set; }
 		public string ZIp { get; set; }
 		public string IndividualRelationshipCode { get; set; }
+
+		// relational properties
+
+		public Subscriber Subscriber { get; set; }
 	}
 }

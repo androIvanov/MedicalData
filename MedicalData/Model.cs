@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using MedicalData.Entities;
-using MedicalData.EntityConfiguration;
+using System.Linq;
 
 namespace MedicalData
 {

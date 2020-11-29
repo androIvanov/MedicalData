@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
-    class Person
-    {
-
+	class Person
+	{
 		public int Id { get; set; }
 		public string PatientIdExt { get; set; }
 		public string MRN { get; set; }
@@ -35,5 +33,9 @@ namespace MedicalData.Entities
 		public string Citizenship { get; set; }
 		public DateTime PatientDeathDate { get; set; }
 		public int PatientDeathIndicator { get; set; }
+
+		// navigational properties
+
+		public ICollection<PatientAccount> PatientAccounts { get; set; }
 	}
 }

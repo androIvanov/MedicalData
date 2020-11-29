@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -25,5 +24,10 @@ namespace MedicalData.Entities
 		public string EmployerName { get; set; }
 		public string EmployerAddress { get; set; }
 		public string EmployerPhoneNumber { get; set; }
+
+		// realtional properties
+
+		public PatientAccount PatientAccount { get; set; }
+		public ICollection<Insurance> Insurances { get; set; }
 	}
 }

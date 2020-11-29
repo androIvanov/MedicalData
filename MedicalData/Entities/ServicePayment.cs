@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -26,5 +24,9 @@ namespace MedicalData.Entities
 		public string LineItemControlNumber { get; set; }
 		public string ServiceSupplementalAmountQualifierCode { get; set; }
 		public decimal ServiceSupplementalAmount { get; set; }
+
+		// relational properties
+
+		public ClaimPayments ClaimPayment { get; set; }
 	}
 }

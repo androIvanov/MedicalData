@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,6 +17,10 @@ namespace MedicalData.EntityConfiguration
             builder.Property(x => x.Address).HasColumnType("nchar(255)").IsRequired();
             builder.Property(x => x.PhoneHome).HasColumnType("nchar(255)").IsRequired();
             builder.Property(x => x.PhoneBusiness).HasColumnType("nchar(255)").IsRequired();
+
+            // relations
+
+            builder.HasOne(r => r.PatientAccount);
         }
     }
 }

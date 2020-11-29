@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -55,6 +52,10 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.PayeeReferenceIdQualifier_REF_TJ).HasColumnType("nvarchar(3)");
 			builder.Property(x => x.AdditionalPayeeId_REF_TJ).HasColumnType("nvarchar(80)");
 
+			// relations
+
+			builder.HasMany(r => r.ClaimPayments);
+			builder.HasMany(r => r.LineNumbers);
 		}
     }
 }

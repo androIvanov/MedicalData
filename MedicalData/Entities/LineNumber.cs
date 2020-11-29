@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -20,5 +18,8 @@ namespace MedicalData.Entities
 
 		public decimal TotalClaimChargeAmount { get; set; }
 
+		// relational properties
+
+		public Transaction Transaction { get; set; }
 	}
 }

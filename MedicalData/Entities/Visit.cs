@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -71,5 +69,9 @@ namespace MedicalData.Entities
 		public string VisitDescription { get; set; }
 		public string ReferralSourceCode { get; set; }
 		public string PatientStatusCode { get; set; }
+
+		// relational properties
+
+		public PatientAccount PatientAccount { get; set; }
     }
 }

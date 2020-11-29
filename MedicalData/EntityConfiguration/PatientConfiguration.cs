@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -27,6 +24,10 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.State).HasColumnType("nvarchar(2)");
 			builder.Property(x => x.ZIp).HasColumnType("nvarchar(10)");
 			builder.Property(x => x.IndividualRelationshipCode).HasColumnType("nvarchar(2)").IsRequired();
+
+			// realtions 
+
+			builder.HasOne(r => r.Subscriber);
 		}
     }
 }

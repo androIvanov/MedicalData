@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -57,5 +56,10 @@ namespace MedicalData.Entities
 		public int Days { get; set; }
 		public string CertificationAgency { get; set; }
 		public string PreCertificationReqWindow { get; set; }
+
+		// realtional properties
+
+		public Guarantors Guarantor { get; set; }
+		public ICollection<Eligibility> Eligibilities { get; set; }
 	}
 }

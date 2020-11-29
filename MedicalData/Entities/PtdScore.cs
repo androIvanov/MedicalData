@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -15,5 +13,9 @@ namespace MedicalData.Entities
         public string ResolvedBy { get; set; }
         public DateTime ResolvedDate { get; set; }
 
+        // relational properties
+
+        public PatientAccount PatientAccount { get; set; }
+        public CallsToActions CallsToActions { get; set; }
     }
 }

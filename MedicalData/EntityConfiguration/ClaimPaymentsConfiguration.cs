@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MedicalData.Entities;
 
 namespace MedicalData.EntityConfiguration
 {
     class ClaimPaymentsConfiguration : IEntityTypeConfiguration<ClaimPayments>
     {
         public void Configure(EntityTypeBuilder<ClaimPayments> builder)
-        {
+        { 
             builder.HasKey(p => p.ClaimPaymentId);
             builder.Property(p => p.ClaimPaymentId).HasColumnType("int").IsRequired();
             builder.Property(p => p.TransactionId).HasColumnType("int").IsRequired();
@@ -52,6 +50,12 @@ namespace MedicalData.EntityConfiguration
             builder.Property(p => p.ClaimContactComunicationsNumberQualifier).HasColumnType("nvarchar(2)");
             builder.Property(p => p.ClaimContactComunicationsNumber).HasColumnType("nvarchar(256)");
             builder.Property(p => p.CoverageAmount).HasColumnType("decimal(18, 2)");
+
+            // relations
+
+            builder.HasOne(r => r.EDI835Message);
+            builder.HasMany(r => r.ServicePayments);
+            builder.HasOne(r => r.Transaction);
         }
     }
 }

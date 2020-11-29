@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -48,5 +47,10 @@ namespace MedicalData.Entities
 		public string AdditionalPayeeId_REF_PQ { get; set; }
 		public string PayeeReferenceIdQualifier_REF_TJ { get; set; }
 		public string AdditionalPayeeId_REF_TJ { get; set; }
+
+		// relational properties
+
+		public ICollection<ClaimPayments> ClaimPayments { get; set; } 
+		public ICollection<LineNumber> LineNumbers { get; set; }
     }
 }

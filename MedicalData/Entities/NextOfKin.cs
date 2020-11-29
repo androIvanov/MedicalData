@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MedicalData.Entities
+﻿namespace MedicalData.Entities
 {
     class NextOfKin
     {
@@ -14,5 +10,9 @@ namespace MedicalData.Entities
 		public string Address { get; set; }
 		public string PhoneHome { get; set; }
 		public  string PhoneBusiness { get; set; }
+
+		// relational properties
+
+		public PatientAccount PatientAccount { get; set; }
 	}
 }

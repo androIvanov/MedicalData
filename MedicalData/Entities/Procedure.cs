@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MedicalData.Entities
 {
@@ -14,5 +12,9 @@ namespace MedicalData.Entities
 		public string ProcedureDescription { get; set; }
 		public DateTime ProcedureDateTime { get; set; }
 		public string AssociatedDiagnosis { get; set; }
+
+		// relational properties
+
+		public Diagnosis Diagnosis { get; set; }
 	}
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MedicalData.Entities
+﻿namespace MedicalData.Entities
 {
     class Provider
     {
@@ -22,5 +18,9 @@ namespace MedicalData.Entities
 		public string City { get; set; }
 		public string State { get; set; }
 		public string Zip { get; set; }
+
+		// relational properties
+
+		public Claims Claim { get; set; }
 	}
 }

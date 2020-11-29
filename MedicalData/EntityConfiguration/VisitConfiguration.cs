@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -77,6 +74,10 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.VisitDescription).HasColumnType("nvarchar(255)");
 			builder.Property(x => x.ReferralSourceCode).HasColumnType("nvarchar(50)");
 			builder.Property(x => x.PatientStatusCode).HasColumnType("nvarchar(50)");
+
+			// relations
+
+			builder.HasOne(r => r.PatientAccount);
         }
     }
 }

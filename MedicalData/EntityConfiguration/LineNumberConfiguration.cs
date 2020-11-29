@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,6 +16,10 @@ namespace MedicalData.EntityConfiguration
             builder.Property(x => x.FiscalPeriodDate).HasColumnType("date").IsRequired();
             builder.Property(x => x.TotalClaimCount).HasColumnType("int").IsRequired();
             builder.Property(x => x.TotalClaimChargeAmount).HasColumnType("decimal(18, 2)").IsRequired();
+
+            // relations 
+
+            builder.HasOne(r => r.Transaction);
         }
     }
 }

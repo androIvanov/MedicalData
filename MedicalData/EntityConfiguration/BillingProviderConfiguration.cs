@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MedicalData.Entities;
 
 namespace MedicalData.EntityConfiguration
 {
@@ -29,6 +27,10 @@ namespace MedicalData.EntityConfiguration
             builder.Property(p => p.Zip).HasColumnType("nvarchar(10)");
             builder.Property(p => p.TaxReferenceIdQualifier).HasColumnType("nvarchar(3)");
             builder.Property(p => p.TaxReferenceId).HasColumnType("nvarchar(50)");
+
+            // realtions
+
+            builder.HasMany(r => r.Subscribers);
         }
     }
 }

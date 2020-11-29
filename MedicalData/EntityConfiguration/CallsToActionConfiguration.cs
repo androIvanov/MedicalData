@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using MedicalData.Entities;
 
 namespace MedicalData.EntityConfiguration
 {
@@ -16,6 +14,10 @@ namespace MedicalData.EntityConfiguration
             builder.Property(p => p.PtdCoeficient).IsRequired().HasColumnType("int");
             builder.Property(p => p.Action1).HasColumnType("nvarchar(255)");
             builder.Property(p => p.Action2).HasColumnType("nvarchar(255)");
+
+            // relations
+
+            builder.HasMany(r => r.PtdScores);
         }
     }
 }

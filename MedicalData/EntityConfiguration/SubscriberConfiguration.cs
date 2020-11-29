@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -48,6 +45,12 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.PayerState).HasColumnType("nvarchar(2)");
 			builder.Property(x => x.PayerZip).HasColumnType("nvarchar(10)");
 
+			// relations
+
+			builder.HasOne(r => r.EDI837Message);
+			builder.HasMany(r => r.Patients);
+			builder.HasOne(r => r.BillingProvider);
+			builder.HasMany(r => r.Claims);
 		}
     }
 }

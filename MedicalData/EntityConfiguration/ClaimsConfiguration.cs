@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MedicalData.Entities;
-
 namespace MedicalData.EntityConfiguration 
 {
     class ClaimsConfiguration : IEntityTypeConfiguration<Claims>
@@ -34,6 +30,11 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.InstitutionalInstitutionalPatientStatusCode).HasColumnType("nvarchar(2)");
 			builder.Property(x => x.ClaimRefferenceId).HasColumnType("nvarchar(50)");
 
+			// realtions
+
+			builder.HasOne(r => r.Subscriber);
+			builder.HasMany(r => r.ServiceLines);
+			builder.HasMany(r => r.Providers);
 		}
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -19,6 +16,15 @@ namespace MedicalData.EntityConfiguration
             builder.Property(x => x.PrimaryCareProvider).HasColumnType("nvarchar(255)");
 	        builder.Property(x => x.StudentIndicator).HasColumnType("bit").IsRequired();
             builder.Property(x => x.Facility).HasColumnType("nvarchar(255)").IsRequired();
+
+            // relations 
+
+            builder.HasOne(r => r.Person);
+            builder.HasMany(r => r.Diagnoses);
+            builder.HasMany(r => r.NextOfKins);
+            builder.HasMany(r => r.PtdScores);
+            builder.HasMany(r => r.Visits);
+            builder.HasMany(r => r.Guarantors);
         }
     }
 }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace MedicalData
+namespace MedicalData.Entities
 {
     class BillingProviders
     {
@@ -24,5 +22,9 @@ namespace MedicalData
         public string Zip { get; set; }
         public string TaxReferenceIdQualifier { get; set; }
         public string TaxReferenceId { get; set; }
+
+        // relational properties
+
+        public ICollection<Subscriber> Subscribers { get; set; }
     }
 }
