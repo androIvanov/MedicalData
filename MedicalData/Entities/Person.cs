@@ -14,7 +14,7 @@ namespace MedicalData.Entities
 		public string MiddleName { get; set; }
 		public string NameSuffix { get; set; }
 		public string MothersMaidenName { get; set; }
-		public DateTime DateOfBirth { get; set; }
+		public DateTime? DateOfBirth { get; set; }
 		public string Sex { get; set; }
 		public string Race { get; set; }
 		public string StreetAddress { get; set; }
@@ -31,8 +31,8 @@ namespace MedicalData.Entities
 		public bool MultipleBirthIndicator { get; set; }
 		public int BirthOrder { get; set; }
 		public string Citizenship { get; set; }
-		public DateTime PatientDeathDate { get; set; }
-		public int PatientDeathIndicator { get; set; }
+		public DateTime? PatientDeathDate { get; set; }
+		public int? PatientDeathIndicator { get; set; }
 
 		// navigational properties
 

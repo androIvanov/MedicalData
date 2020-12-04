@@ -9,7 +9,7 @@ namespace MedicalData.Entities
         public string DiagnosisCodingMethod { get; set; }
         public string DiagnosisCode { get; set; }
         public string DiagnosisDescription { get; set; }
-        public DateTime DiagnosisDateTime { get; set; }
+        public DateTime? DiagnosisDateTime { get; set; }
         public string DiagnosisType { get; set; }
         public string DiagnosticRelatedGroup { get; set; }
         public int AccountId { get; set; }

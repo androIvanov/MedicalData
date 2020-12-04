@@ -25,6 +25,20 @@ namespace MedicalData.EntityConfiguration
             builder.HasMany(r => r.PtdScores);
             builder.HasMany(r => r.Visits);
             builder.HasMany(r => r.Guarantors);
+
+            // seeding 
+
+            //builder.HasData(
+            //    new PatientAccount 
+            //    {
+            //        AccountId = 1,
+            //        PersonId = 1,
+            //        AppointmentID = "SSD",
+            //        PatientAccountNumber = "J7A1R3V4A9N",
+            //        StudentIndicator = false,
+            //        Facility = "SoftServe"
+            //    }
+            //);
         }
     }
 }

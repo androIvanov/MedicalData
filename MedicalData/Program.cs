@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore;
+using MedicalData.Entities;
 
 namespace MedicalData
 {

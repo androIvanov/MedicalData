@@ -4,7 +4,7 @@ namespace MedicalData.Entities
 {
     class Visit
     {
-		public int VIsitId { get; set; }
+		public int VisitId { get; set; }
 		public string SetID { get; set; }
 		public string PatientClass { get; set; }
 		public string AssignedLocation { get; set; }

@@ -8,8 +8,8 @@ namespace MedicalData.Entities
         public int ClaimPaymentId { get; set; }
         public int TransactionId { get; set; }
         public int MessageId { get; set; }
-        public int PatientControlNumber { get; set; }
-        public int ClaimStatusCode { get; set; }
+        public string PatientControlNumber { get; set; }
+        public string ClaimStatusCode { get; set; }
         public decimal TotalClaimChargeAmount { get; set; }
         public decimal ClaimPaymentAmount { get; set; }
         public decimal PatientResponsibilityAmount { get; set; }

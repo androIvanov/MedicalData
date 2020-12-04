@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using MedicalData.Entities;
-using System.Linq;
+using System;
+using MedicalData.EntityConfiguration;
 
 namespace MedicalData
 {
@@ -41,6 +42,7 @@ namespace MedicalData
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            modelBuilder.Seed();
         }
     }
 

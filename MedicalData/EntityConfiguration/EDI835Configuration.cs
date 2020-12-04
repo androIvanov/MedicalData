@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace MedicalData.EntityConfiguration
 {
@@ -16,6 +17,17 @@ namespace MedicalData.EntityConfiguration
             // relations
 
             builder.HasMany(r => r.ClaimPayments);
+
+            // seeding 
+
+            //builder.HasData(
+            //    new EDI835Message 
+            //    {
+            //        MessageId = 1,
+            //        Message = "Lorem ipsum ziben aleb",
+            //        DateAdded = DateTime.UtcNow
+            //    }
+            //);
         }
     }
 }

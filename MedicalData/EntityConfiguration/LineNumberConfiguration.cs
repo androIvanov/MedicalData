@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace MedicalData.EntityConfiguration
 {
@@ -20,6 +21,21 @@ namespace MedicalData.EntityConfiguration
             // relations 
 
             builder.HasOne(r => r.Transaction);
+
+            //seeding
+
+            //builder.HasData(
+            //    new LineNumber 
+            //    {
+            //        LineNumberId = 10,
+            //        TransactionId = 1,
+            //        ProviderId = "PROVIDER225",
+            //        FacilityTypeCode = "GA",
+            //        FiscalPeriodDate = DateTime.UtcNow,
+            //        TotalClaimCount = 65893,
+            //        TotalClaimChargeAmount = 2421
+            //    }
+            //);
         }
     }
 }

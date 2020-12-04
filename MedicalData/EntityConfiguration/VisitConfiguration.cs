@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MedicalData.Entities;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace MedicalData.EntityConfiguration
 {
@@ -8,8 +9,8 @@ namespace MedicalData.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Visit> builder)
         {
-            builder.HasKey(k => k.VIsitId);
-			builder.Property(x => x.VIsitId).HasColumnType("int").IsRequired();
+            builder.HasKey(k => k.VisitId);
+			builder.Property(x => x.VisitId).HasColumnType("int").IsRequired();
 			builder.Property(x => x.SetID).HasColumnType("nvarchar(50)").IsRequired();
 			builder.Property(x => x.PatientClass).HasColumnType("nvarchar(50)").IsRequired();
 			builder.Property(x => x.AssignedLocation).HasColumnType("nvarchar(255)").IsRequired();
@@ -78,6 +79,40 @@ namespace MedicalData.EntityConfiguration
 			// relations
 
 			builder.HasOne(r => r.PatientAccount);
+
+			// seeding
+
+			//builder.HasData(new Visit 
+			//{
+   //             VisitId = 1,
+   //             SetID = "SETTINGID45678",
+   //             PatientClass = "First",
+   //             AssignedLocation = "Varna",
+   //             AttendingDoctorID = "G589TY8ORIO4590",
+   //             AttendingDoctorFamilyName = "Joshua",
+   //             AttendingDoctorGivenName = "Spark",
+   //             AttendingDoctorMiddleName = "Jonson",
+   //             AttendingDoctorSuffix = "ly",
+   //             AttendingDoctorPrefix = "Dr.",
+   //             ReferringDoctor = "Jackob",
+   //             ConsultingDoctor = "Vladimir",
+   //             HospitalService = "Stavri",
+   //             AdmittingDoctorID = "U57839",
+   //             AdmittingDoctorFamilyName = "Gregor",
+   //             AdmittingDoctorGivenName = "Jo",
+   //             AdmittingDoctorMiddleName = "Marchal",
+   //             AdmittingDoctorSuffix = "ny",
+   //             AdmittingDoctorPrefix = "Juniour",
+   //             PatientType = "Elder",
+   //             VisitNumber = "25CC",
+   //             FinancialClass = "Upper",
+   //             DeleteAccountIndicator = "NO",
+   //             DeleteAccountDate = DateTime.UtcNow,
+   //             AccountStatus = "Innactive",
+   //             AdmitDateTime = DateTime.UtcNow,
+   //             DischargeDateTime = DateTime.UtcNow,
+   //             AccountId = 1,
+   //         });
         }
     }
 }
