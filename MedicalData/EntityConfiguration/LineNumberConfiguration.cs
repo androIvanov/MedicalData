@@ -21,21 +21,6 @@ namespace MedicalData.EntityConfiguration
             // relations 
 
             builder.HasOne(r => r.Transaction);
-
-            //seeding
-
-            //builder.HasData(
-            //    new LineNumber 
-            //    {
-            //        LineNumberId = 10,
-            //        TransactionId = 1,
-            //        ProviderId = "PROVIDER225",
-            //        FacilityTypeCode = "GA",
-            //        FiscalPeriodDate = DateTime.UtcNow,
-            //        TotalClaimCount = 65893,
-            //        TotalClaimChargeAmount = 2421
-            //    }
-            //);
         }
     }
 }

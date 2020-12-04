@@ -21,7 +21,7 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.ServiceTypeCode).HasColumnType("nvarchar(2)");
 			builder.Property(x => x.PrimaryDiagnosisCodePointer).HasColumnType("nvarchar(2)");
 			builder.Property(x => x.SecondaryDiagnosisCodePointer).HasColumnType("nvarchar(2)");
-			builder.Property(x => x.ServiceDateTime).HasColumnType("datetime").IsRequired();
+			builder.Property(x => x.ServiceDateTime).HasColumnType("date").IsRequired();
 
 			// relations 
 

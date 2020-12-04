@@ -79,40 +79,6 @@ namespace MedicalData.EntityConfiguration
 			// relations
 
 			builder.HasOne(r => r.PatientAccount);
-
-			// seeding
-
-			//builder.HasData(new Visit 
-			//{
-   //             VisitId = 1,
-   //             SetID = "SETTINGID45678",
-   //             PatientClass = "First",
-   //             AssignedLocation = "Varna",
-   //             AttendingDoctorID = "G589TY8ORIO4590",
-   //             AttendingDoctorFamilyName = "Joshua",
-   //             AttendingDoctorGivenName = "Spark",
-   //             AttendingDoctorMiddleName = "Jonson",
-   //             AttendingDoctorSuffix = "ly",
-   //             AttendingDoctorPrefix = "Dr.",
-   //             ReferringDoctor = "Jackob",
-   //             ConsultingDoctor = "Vladimir",
-   //             HospitalService = "Stavri",
-   //             AdmittingDoctorID = "U57839",
-   //             AdmittingDoctorFamilyName = "Gregor",
-   //             AdmittingDoctorGivenName = "Jo",
-   //             AdmittingDoctorMiddleName = "Marchal",
-   //             AdmittingDoctorSuffix = "ny",
-   //             AdmittingDoctorPrefix = "Juniour",
-   //             PatientType = "Elder",
-   //             VisitNumber = "25CC",
-   //             FinancialClass = "Upper",
-   //             DeleteAccountIndicator = "NO",
-   //             DeleteAccountDate = DateTime.UtcNow,
-   //             AccountStatus = "Innactive",
-   //             AdmitDateTime = DateTime.UtcNow,
-   //             DischargeDateTime = DateTime.UtcNow,
-   //             AccountId = 1,
-   //         });
         }
     }
 }

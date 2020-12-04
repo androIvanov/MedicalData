@@ -33,21 +33,6 @@ namespace MedicalData.EntityConfiguration
 			// relations
 
 			builder.HasOne(r => r.ClaimPayment);
-
-			// seeding
-
-			//builder.HasData(
-			//	new ServicePayment
-			//	{
-			//		ServicePaymentId = 1,
-			//		ClaimPaymentId = 1,
-			//		ServiceIdQualifier = "JS",
-			//		AdjudicatedProcedureCode = "6F48J56N9476GJG0E5HG",
-			//		LineItemChargeAmount = 4354.22m,
-			//		LineItemProviderPaymentAmount = 34.31m,
-			//		UnitsOfServicePaidCount = 334
-			//	}
-			//);
 		}
     }
 }

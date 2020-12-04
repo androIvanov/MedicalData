@@ -9,8 +9,7 @@ namespace MedicalData.Entities
         public int AccountId;
 
         //navigational properties
-
-        //KEYLESS ??
-
+       
+        //KEYLESS???
     }
 }

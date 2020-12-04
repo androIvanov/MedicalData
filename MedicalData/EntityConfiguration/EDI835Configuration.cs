@@ -17,17 +17,6 @@ namespace MedicalData.EntityConfiguration
             // relations
 
             builder.HasMany(r => r.ClaimPayments);
-
-            // seeding 
-
-            //builder.HasData(
-            //    new EDI835Message 
-            //    {
-            //        MessageId = 1,
-            //        Message = "Lorem ipsum ziben aleb",
-            //        DateAdded = DateTime.UtcNow
-            //    }
-            //);
         }
     }
 }

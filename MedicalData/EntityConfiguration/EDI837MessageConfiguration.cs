@@ -11,7 +11,7 @@ namespace MedicalData.EntityConfiguration
             builder.HasKey(k => k.MessageId);
             builder.Property(p => p.MessageId).HasColumnType("int").IsRequired();
             builder.Property(p => p.Message).HasColumnType("nvarchar(max)").IsRequired();
-            builder.Property(p => p.DateAdded).HasColumnType("datetime").IsRequired();
+            builder.Property(p => p.DateAdded).HasColumnType("date").IsRequired();
 
             // relations
 

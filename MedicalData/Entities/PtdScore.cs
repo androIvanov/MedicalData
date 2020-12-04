@@ -11,7 +11,7 @@ namespace MedicalData.Entities
         public bool IsResolved { get; set; }
         public string Notes { get; set; }
         public string ResolvedBy { get; set; }
-        public DateTime ResolvedDate { get; set; }
+        public DateTime? ResolvedDate { get; set; }
 
         // relational properties
 

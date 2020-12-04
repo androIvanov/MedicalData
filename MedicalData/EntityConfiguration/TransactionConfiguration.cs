@@ -56,21 +56,6 @@ namespace MedicalData.EntityConfiguration
 
 			builder.HasMany(r => r.ClaimPayments);
 			builder.HasMany(r => r.LineNumbers);
-
-			// seeding
-
-			//builder.HasData(
-			//	new Transaction 
-			//	{
-			//		TransactionId = 1,
-			//		TransactionHandlingCode = "NN",
-			//		TotalActualProviderPaymentAmount = 2999,
-			//		CreditDebitFlag = "C",
-			//		PaymentMethodCode = "FST",
-			//		EFTTraceNumber = "G457JFHG437535HU358",
-			//		PayeeName = "Robert",
-			//	}	
-			//);
 		}
     }
 }

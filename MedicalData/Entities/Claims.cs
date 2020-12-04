@@ -16,13 +16,13 @@ namespace MedicalData.Entities
         public string ProviderAcceptAssignmentCode { get; set; }
         public string AssignmentOfBenefitsIndicator { get; set; }
         public string RelatedCausesCode { get; set; }
-        public DateTime OnsetDate { get; set; }
+        public DateTime? OnsetDate { get; set; }
         public string DTP434 { get; set; }
         public string PrincipalDiagnosisCode { get; set; }
         public string AdditionalDiagnosisCode1 { get; set; }
         public string AdditionalDiagnosisCode2 { get; set; }
         public string OccurrenceCode { get; set; }
-        public DateTime OccurenceDate { get; set; }
+        public DateTime? OccurenceDate { get; set; }
         public string InstitutionalAdmissionTypeCode { get; set; }
         public string InstitutionalAdmissionSourceCode { get; set; }
         public string InstitutionalInstitutionalPatientStatusCode { get; set; }

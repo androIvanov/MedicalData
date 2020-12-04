@@ -57,24 +57,6 @@ namespace MedicalData.EntityConfiguration
             builder.HasOne(r => r.EDI835Message);
             builder.HasMany(r => r.ServicePayments);
             builder.HasOne(r => r.Transaction);
-
-            // seeding
-
-            //builder.HasData(
-            //    new ClaimPayments 
-            //    {
-            //        ClaimPaymentId = 1,
-            //        TransactionId = 1,
-            //        MessageId = 1,
-            //        PatientControlNumber = "JHGE578TOH4",
-            //        ClaimStatusCode = "PS",
-            //        TotalClaimChargeAmount = 567,
-            //        ClaimPaymentAmount = 999,
-            //        ClaimFilingIndicatorCode = "JA",
-            //        PatientEntityTypeQualifier = "S",
-            //        ClaimRecivedDate = DateTime.UtcNow
-            //    }
-            //);
         }
     }
 }

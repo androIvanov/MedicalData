@@ -113,6 +113,7 @@ namespace MedicalData.EntityConfiguration
                     MiddleName = "Jackson",
                     NameSuffix = "ly",
                     MothersMaidenName = "Marine",
+                    DateOfBirth = DateTime.UtcNow,
                     Sex = "M",
                     StreetAddress = "Osmi PRimorski polk",
                     OtherDesignation = "Eastern BG",
@@ -162,7 +163,7 @@ namespace MedicalData.EntityConfiguration
                 }
             );
             builder.Entity<Insurance>().HasData(
-                new Insurance 
+                new Insurance
                 {
                     InsuranceId = 1,
                     GuarantorId = 1,
@@ -174,8 +175,8 @@ namespace MedicalData.EntityConfiguration
                     CompanyPhoneNumber = "0555857",
                     GroupNumber = "225",
                     GroupName = "Fourlis",
-                    PlanEffectiveDate = new DateTime(01, 01, 2020),
-                    PlanExpirationDate = DateTime.Now,
+                    PlanEffectiveDate = DateTime.UtcNow,
+                    PlanExpirationDate = DateTime.ParseExact("2005-09-01", "yyyy-MM-dd", null),
                     AuthorizationInformation = "Authorised",
                     PlanType = "Good",
                     InsuredFamilyName = "Dobrevi",
@@ -183,12 +184,12 @@ namespace MedicalData.EntityConfiguration
                     InsuredMiddleName = "Varchaev",
                     InsuredSuffix = "ny",
                     RelationshiptoPatient = "Daenerys",
-                    InsuredsDateOfBirth = DateTime.UtcNow,
+                    InsuredsDateOfBirth = DateTime.ParseExact("2005-09-01", "yyyy-MM-dd", null),
                     InsuredsAddress = "Varna, bul Osmi Primorski Polk",
                     ReportofEligibilityCode = 13,
-                    ReportofEligibilityDate = DateTime.Today,
+                    ReportofEligibilityDate = DateTime.ParseExact("2005-09-01", "yyyy-MM-dd", null),
                     PreAdmitCertification = "Certificacate",
-                    VerificationDateTime = DateTime.Today,
+                    VerificationDateTime = DateTime.ParseExact("2005-09-01", "yyyy-MM-dd", null),
                     VerificationBy = "Jack Morrison",
                     PolicyNumber = "2456",
                     InsuredsIDNumber = "0YR72TL49Z5",
@@ -196,6 +197,123 @@ namespace MedicalData.EntityConfiguration
                     SetIDIN3 = "GHOP04U78",
                 }
             );
+            builder.Entity<Eligibility>().HasData(
+                new Eligibility 
+                {
+                    EligibilityId = 1,
+                    InsuranceId = 1,
+                    SetID = "SOMEID",
+                    SetIDZM2 = "835306N",
+                }
+            );
+            builder.Entity<NextOfKin>().HasData(
+                new NextOfKin
+                {
+                    NOKId = 1,
+                    AccountId = 1,
+                    SetID = "SOMEID",
+                    Name = "Jason",
+                    Relationship = "brother",
+                    Address = "Sofia, Vihren 40",
+                    PhoneHome = "305693",
+                    PhoneBusiness = "555785"
+                }
+            );
+            builder.Entity<PtdScore>().HasData(
+                new PtdScore
+                {
+                    ScoreId = 1,
+                    AccountId = 1,
+                    Code = "50GNFH78G",
+                    Score = 25.7m,
+                    IsResolved = true,
+                }
+            );
+            builder.Entity<CallsToActions>().HasData(
+                new CallsToActions
+                {
+                    Code = "74589OTKJFN",
+                    Action1 = "Diagnose",
+                    Action2 = "Procedures",
+                    PtdCoeficient = 256
+                }
+            );
+            builder.Entity<BillingProviders>().HasData(
+                new BillingProviders 
+                {
+                    ProviderId = 1,
+                }
+            );
+            builder.Entity<Subscriber>().HasData(
+                new Subscriber
+                {
+                    SubscriberId = 1,
+                    ProviderId = 1,
+                    MessageId = 1,
+                    PayerResponsibilitySequenceNumberCode = "S",
+                }
+            );
+            builder.Entity<Patient>().HasData(
+                new Patient
+                {
+                    PatientId = 1,
+                    SubscriberId = 1,
+                    EntityTypeQualifier = "M",
+                    DateOfBirth = DateTime.UtcNow,
+                    Sex = "M",
+                    IndividualRelationshipCode = "SN"
+                }
+            );
+            builder.Entity<Claims>().HasData(
+                new Claims 
+                {
+                    ClaimId = 1,
+                    SubscriberId = 1,
+                    PatientControlNumber = "7890OJNB",
+                    MonetaryAmount = 56.8m,
+                    FacilityCodeValue = "C",
+                    FacilityCodeQualifier = "S",
+                    ClaimFrequencyTypeCode = "C",
+                }
+            );
+            builder.Entity<EDI837Message>().HasData(
+                new EDI837Message 
+                {
+                    MessageId = 1,
+                    Message = "All good",
+                    DateAdded = DateTime.UtcNow
+                }
+            );
+            builder.Entity<ServiceLine>().HasData(
+                new ServiceLine 
+                {
+                    ServiceLineId = 1,
+                    ClaimId = 1,
+                    ServiceIDQualifier = "JS",
+                    ServiceID = "ghi7654",
+                    MonetaryAmount = 108.2m,
+                    UnitForMeasurementCode = "GL",
+                    Quantity = 3.5m,
+                    ServiceDateTime = DateTime.UtcNow
+                }
+            );
+            builder.Entity<Provider>().HasData(
+                new Provider 
+                {
+                   ProviderId = 1,
+                   ClaimId = 1,
+                   EntityIdCode = "MS",
+                   EntityTypeQualifier = "F",
+                }
+            );
+            //builder.Entity<HL7Messages>().HasData(
+            //    new HL7Messages 
+            //    {
+            //        MessageDateTime = DateTime.UtcNow,
+            //        Message = "All finaly good",
+            //        AccountId = 1,
+            //    }
+            //);
         }
     }
 }

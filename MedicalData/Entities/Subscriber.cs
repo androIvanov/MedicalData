@@ -26,7 +26,7 @@ namespace MedicalData.Entities
 		public string SubscriberCity { get; set; }
 		public string SubscriberState { get; set; }
 		public string SubscriberZip { get; set; }
-		public DateTime SubscriberDateOfBirth { get; set; }
+		public DateTime? SubscriberDateOfBirth { get; set; }
 		public string SubscriberSex { get; set; }
 		public string PayerEntityTypeQualifier { get; set; }
 		public string PayerNameLast { get; set; }

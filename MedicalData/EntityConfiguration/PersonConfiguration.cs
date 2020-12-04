@@ -19,7 +19,7 @@ namespace MedicalData.EntityConfiguration
 			builder.Property(x => x.MiddleName).HasColumnType("nchar(255)").IsRequired();
 			builder.Property(x => x.NameSuffix).HasColumnType("nchar(255)").IsRequired();
 			builder.Property(x => x.MothersMaidenName).HasColumnType("nchar(255)").IsRequired();
-			builder.Property(x => x.DateOfBirth).HasColumnType("datetime"); //
+			builder.Property(x => x.DateOfBirth).HasColumnType("date").IsRequired(); //
 			builder.Property(x => x.Sex).HasColumnType("varchar(1)").IsRequired();
 			builder.Property(x => x.Race).HasColumnType("nvarchar(50)");
 			builder.Property(x => x.StreetAddress).HasColumnType("nchar(255)").IsRequired();
@@ -41,31 +41,6 @@ namespace MedicalData.EntityConfiguration
 			// relations 
 
 			builder.HasMany(r => r.PatientAccounts);
-
-			// seeding 
-
-			//builder.HasData(
-			//	new Person
-			//	{
-			//		Id = 1,
-			//		PatientIdExt = "MY6RGHIO09876R",
-			//		MRN = "IUY54EDFGHJKO987",
-			//		PatientId = "OneTwo",
-			//		FamilyName = "Jeferson",
-			//		GivenName = "Thomas",
-			//		MiddleName = "Stoqnov",
-			//		NameSuffix = "ly",
-			//		MothersMaidenName = "Stoeva",
-			//		DateOfBirth = DateTime.UtcNow,
-			//		Sex = "M",
-			//		StreetAddress = "Osmi Primorski Polk No139",
-			//		OtherDesignation = "Bulgaria",
-			//		City = "Varna",
-			//		State = "Varna",
-			//		Zip = "9010",
-			//		SNN = "Double",
-			//	}
-			//);
 		}
     }
 }

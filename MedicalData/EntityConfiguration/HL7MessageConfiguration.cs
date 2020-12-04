@@ -13,6 +13,5 @@ namespace MedicalData.EntityConfiguration
             builder.Property(x => x.Message).HasColumnType("nvarchar(max)").IsRequired();
             builder.Property(x => x.AccountId).HasColumnType("int").IsRequired();
         }
-
     }
 }
